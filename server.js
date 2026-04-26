@@ -79,10 +79,8 @@ function detectCategory(text) {
     text.includes("proof of income") ||
     text.includes("income letter") ||
     text.includes("hardship letter") ||
-    text.includes("letter") ||
     text.includes("document") ||
-    text.includes("documents") ||
-    
+    text.includes("documents")
   ) {
     return "documents";
   }
@@ -115,6 +113,12 @@ function detectCategory(text) {
   // HOUSING
   if (
     text.includes("housing") ||
+    text.includes("home") ||
+    text.includes("homes") ||
+    text.includes("house") ||
+    text.includes("houses") ||
+    text.includes("find a home") ||
+    text.includes("find home") ||
     text.includes("apartment") ||
     text.includes("apartments") ||
     text.includes("rental") ||
@@ -131,12 +135,6 @@ function detectCategory(text) {
     text.includes("place to live") ||
     text.includes("rent assistance") ||
     text.includes("housing assistance")
-    text.includes("home") ||
-text.includes("homes") ||
-text.includes("house") ||
-text.includes("houses") ||
-text.includes("find a home") ||
-text.includes("find home") ||
   ) {
     return "housing";
   }
@@ -149,6 +147,7 @@ text.includes("find home") ||
     text.includes("career") ||
     text.includes("hiring") ||
     text.includes("interview") ||
+    text.includes("resume") ||
     text.includes("resume help") ||
     text.includes("cover letter") ||
     text.includes("employment") ||
@@ -161,7 +160,6 @@ text.includes("find home") ||
     return "work";
   }
 
-  // FALLBACK
   return "unknown";
 }
 
