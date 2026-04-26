@@ -212,14 +212,31 @@ function getOptions(category) {
 function haloCheck(message) {
   const text = message.toLowerCase(); // ONLY lowercase, nothing else
 
-  const blockedPatterns = [
-    "fake document",
-    "forge",
-    "commit fraud",
-    "lie on",
-    "illegal",
-    "bypass verification"
-  ];
+ const blockedPatterns = [
+  "fake document",
+  "false document",
+  "falsified document",
+  "fake paperwork",
+  "false paperwork",
+
+  "fake income",
+  "false income",
+  "fake pay stub",
+  "false pay stub",
+
+  "forge",
+  "forged",
+  "commit fraud",
+  "fraudulent",
+  "scam",
+  "scams",
+  "illegal",
+  "bypass verification",
+
+  "make a fake",
+  "make a false",
+  "lie on application"
+];
 
  const matched = blockedPatterns.find(pattern => text.includes(pattern));
 
