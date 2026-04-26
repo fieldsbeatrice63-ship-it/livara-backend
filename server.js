@@ -40,7 +40,7 @@ function detectUrgency(text) {
   return "active";
 }
 
-const category = detectCategory(normalizedText);
+function detectCategory(text) {
   // FOOD
   if (
     text.includes("eat") ||
@@ -162,7 +162,6 @@ const category = detectCategory(normalizedText);
 
   return "unknown";
 }
-
 function getOptions(category) {
   const options = {
     food: ["Fast", "Affordable", "Healthy"],
@@ -315,9 +314,15 @@ app.post("/api/livara/decide", async (req, res) => {
       });
     }
 
-    const text = message.toLowerCase();
-    const category = detectCategory(text);
-    const urgency = detectUrgency(text);
+   const text = message.toLowerCase();
+
+const normalizedText = text
+  .replace(/[^a-z0-9\s]/g, "")
+  .replace(/\s+/g, " ")
+  .trim();
+
+const category = detectCategory(normalizedText);
+const urgency = detectUrgency(normalizedText);
     const options = getOptions(category);
     const halo = haloCheck(message);
 
