@@ -40,7 +40,7 @@ function detectUrgency(text) {
   return "active";
 }
 
-function detectCategory(text) {
+const category = detectCategory(normalizedText);
   // FOOD
   if (
     text.includes("eat") ||
@@ -211,7 +211,7 @@ function getOptions(category) {
 
 // HALO governance framework
 function haloCheck(message) {
-  const text = message.toLowerCase();
+  const text = message.toLowerCase(); // ONLY lowercase, nothing else
 
   const blockedPatterns = [
     "fake document",
