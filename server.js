@@ -132,6 +132,12 @@ function detectCategory(text) {
     text.includes("place to live") ||
     text.includes("rent assistance") ||
     text.includes("housing assistance")
+    text.includes("home") ||
+text.includes("homes") ||
+text.includes("house") ||
+text.includes("houses") ||
+text.includes("find a home") ||
+text.includes("find home") ||
   ) {
     return "housing";
   }
@@ -299,6 +305,17 @@ app.post("/api/livara/decide", async (req, res) => {
     const urgency = detectUrgency(text);
     const options = getOptions(category);
     const halo = haloCheck(message);
+
+    if (category === "unknown") {
+  return res.json({
+    success: true,
+    category: "unknown",
+    urgency: detectUrgency(text),
+    reply: "I want to help, but I need a little more context. Please reword what you need using words like food, money, credit, housing, documents, or work.",
+    options: ["Food", "Money", "Documents", "Housing", "Work"],
+    nextAction: "reword_request"
+  });
+}
 
     if (!halo.allowed) {
       return res.json({
