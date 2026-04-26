@@ -82,8 +82,7 @@ function detectCategory(text) {
     text.includes("letter") ||
     text.includes("document") ||
     text.includes("documents") ||
-    text.includes("resume") ||
-    text.includes("cover letter")
+    
   ) {
     return "documents";
   }
