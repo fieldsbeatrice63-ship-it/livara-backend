@@ -41,84 +41,169 @@ function detectUrgency(text) {
 }
 
 function detectCategory(text) {
+  // FOOD
   if (
     text.includes("eat") ||
     text.includes("food") ||
     text.includes("hungry") ||
+    text.includes("meal") ||
+    text.includes("meals") ||
     text.includes("lunch") ||
     text.includes("dinner") ||
     text.includes("breakfast") ||
-    text.includes("restaurant")
+    text.includes("restaurant") ||
+    text.includes("restaurants") ||
+    text.includes("takeout") ||
+    text.includes("delivery") ||
+    text.includes("groceries") ||
+    text.includes("grocery") ||
+    text.includes("cheap food") ||
+    text.includes("food near me") ||
+    text.includes("healthy food")
   ) {
     return "food";
   }
 
+  // DOCUMENTS / CREDIT
   if (
     text.includes("credit") ||
+    text.includes("credit repair") ||
+    text.includes("fix my credit") ||
     text.includes("dispute") ||
-    text.includes("letter") ||
     text.includes("collection") ||
-    text.includes("debt") ||
-    text.includes("validation") ||
+    text.includes("collections") ||
+    text.includes("debt validation") ||
+    text.includes("validation letter") ||
+    text.includes("hard inquiry") ||
     text.includes("inquiry") ||
     text.includes("proof of income") ||
-    text.includes("hardship") ||
-    text.includes("resume")
+    text.includes("income letter") ||
+    text.includes("hardship letter") ||
+    text.includes("letter") ||
+    text.includes("document") ||
+    text.includes("documents") ||
+    text.includes("resume") ||
+    text.includes("cover letter")
   ) {
     return "documents";
   }
 
+  // MONEY
   if (
     text.includes("money") ||
-    text.includes("bill") ||
-    text.includes("income") ||
-    text.includes("funding") ||
     text.includes("cash") ||
-    text.includes("pay") ||
-    text.includes("rent")
+    text.includes("bill") ||
+    text.includes("bills") ||
+    text.includes("pay a bill") ||
+    text.includes("pay bills") ||
+    text.includes("need funding") ||
+    text.includes("funding") ||
+    text.includes("loan") ||
+    text.includes("loans") ||
+    text.includes("personal loan") ||
+    text.includes("business funding") ||
+    text.includes("income") ||
+    text.includes("make money") ||
+    text.includes("side hustle") ||
+    text.includes("rent help") ||
+    text.includes("utility help") ||
+    text.includes("financial help") ||
+    text.includes("emergency money")
   ) {
     return "money";
   }
 
+  // HOUSING
   if (
     text.includes("housing") ||
     text.includes("apartment") ||
-    text.includes("home") ||
+    text.includes("apartments") ||
+    text.includes("rental") ||
+    text.includes("renting") ||
+    text.includes("renter") ||
+    text.includes("rental application") ||
+    text.includes("application help") ||
+    text.includes("tenant") ||
     text.includes("landlord") ||
     text.includes("lease") ||
-    text.includes("move")
+    text.includes("eviction") ||
+    text.includes("move") ||
+    text.includes("moving") ||
+    text.includes("place to live") ||
+    text.includes("rent assistance") ||
+    text.includes("housing assistance")
   ) {
     return "housing";
   }
 
+  // WORK
   if (
     text.includes("job") ||
+    text.includes("jobs") ||
     text.includes("work") ||
     text.includes("career") ||
+    text.includes("hiring") ||
     text.includes("interview") ||
-    text.includes("hiring")
+    text.includes("resume help") ||
+    text.includes("cover letter") ||
+    text.includes("employment") ||
+    text.includes("apply for jobs") ||
+    text.includes("job application") ||
+    text.includes("remote job") ||
+    text.includes("part time") ||
+    text.includes("full time")
   ) {
     return "work";
   }
 
-  return "direction";
+  // FALLBACK
+  return "unknown";
 }
 
 function getOptions(category) {
   const options = {
     food: ["Fast", "Affordable", "Healthy"],
+
     documents: [
       "Credit dispute letter",
       "Debt validation letter",
       "Proof of income letter"
     ],
-    money: ["Pay a bill", "Find income", "Get funding"],
-    housing: ["Find housing", "Rental application help", "Create landlord letter"],
-    work: ["Find jobs", "Build resume", "Practice interview"],
-    direction: ["Food", "Money", "Documents"]
+
+    money: [
+      "Pay a bill",
+      "Find income",
+      "Get funding"
+    ],
+
+    housing: [
+      "Find housing",
+      "Rental application help",
+      "Create landlord letter"
+    ],
+
+    work: [
+      "Find jobs",
+      "Build resume",
+      "Practice interview"
+    ],
+
+    direction: [
+      "Food",
+      "Money",
+      "Documents"
+    ],
+
+    unknown: [
+      "Food",
+      "Money",
+      "Documents",
+      "Housing",
+      "Work"
+    ]
   };
 
-  return options[category] || options.direction;
+  return options[category] || options.unknown;
 }
 
 // HALO governance framework
