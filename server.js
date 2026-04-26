@@ -222,7 +222,7 @@ function haloCheck(message) {
     "bypass verification"
   ];
 
-  const matched = blockedPatterns.find(pattern => text.includes(pattern));
+ const matched = blockedPatterns.find(pattern => text.includes(pattern));
 
   if (matched) {
     return {
