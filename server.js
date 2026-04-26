@@ -179,10 +179,11 @@ function getOptions(category) {
     ],
 
     housing: [
-      "Find housing",
-      "Rental application help",
-      "Create landlord letter"
-    ],
+  "Find housing",
+  "Rental application help",
+  "Create landlord letter",
+  "Emergency housing"
+],
 
     work: [
       "Find jobs",
